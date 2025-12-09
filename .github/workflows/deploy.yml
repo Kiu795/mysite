@@ -1,34 +1,38 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy MkDocs
 
 on:
   push:
     branches:
-      - main
+      - main   # 每次 push 到 main 就会重新部署
   workflow_dispatch:
 
+permissions:
+  contents: write  # 让 GitHub Actions bot 可以 push 到 gh-pages
+
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
 
-      - name: Install MkDocs
-        run: |
-          pip install mkdocs mkdocs-material
+    - name: Install MkDocs Material
+      run: |
+        pip install mkdocs-material
 
-      - name: Build site
-        run: |
-          mkdocs build
+    - name: Build MkDocs site
+      run: |
+        mkdocs build --clean
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
+        publish_branch: gh-pages
