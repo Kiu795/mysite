@@ -1,32 +1,48 @@
-name: deploy
+site_name: Kiu’s Blog
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - navigation.top
+    - toc.integrate
 
-on:
-  push:
-    branches:
-      - main
+plugins:
+  - search
+  - blogging:
+      blog_dir: blog
+      post_template: templates/post.html
+      categories_allowed:
+        - tech
+        - diary
+        - travel
+        - notes
+        - life
+      use_git_date: true
+      ignore_errors: true
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.emoji
 
-    steps:
-      - uses: actions/checkout@v3
+extra_css:
+  - stylesheets/extra.css
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - name: Install dependencies
-        run: |
-          pip install mkdocs-material
-          pip install mkdocs-blogging-plugin
-
-      - name: Build site
-        run: mkdocs build --clean
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+nav:
+  - Home: index.md
+  - Blog:
+      - All Posts: blog/index.md
+  - Categories:
+      - Tech: blog/categories/tech.md
+      - Diary: blog/categories/diary.md
+      - Travel: blog/categories/travel.md
+      - Notes: blog/categories/notes.md
+      - Life: blog/categories/life.md
