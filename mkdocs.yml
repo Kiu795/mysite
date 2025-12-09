@@ -1,28 +1,29 @@
-site_name: Kiu’s Blog
-site_url: https://kiu795.github.io/mysite/
-
+site_name: Kiu's Site
 theme:
   name: material
-  language: en
-  custom_dir: overrides
+  features:
+    - search.suggest
+    - search.highlight
+    - navigation.tabs
+    - navigation.sections
+    # ❗ instant navigation 会和 blog 分页冲突，所以必须关掉
+    # - navigation.instant
 
 plugins:
   - search
-  - blogging    # 使用最基本形式，不带额外不支持字段
-
-markdown_extensions:
-  - admonition
-  - toc:
-      permalink: true
-  - pymdownx.highlight
-  - pymdownx.superfences
-  - pymdownx.details
-  - pymdownx.emoji
-
-extra_css:
-  - stylesheets/cards.css
+  - blog:
+      blog_dir: blog
+      post_dir: blog/posts
+      categories: true
+      authors: false
 
 nav:
   - Home: index.md
   - Blog:
       - All Posts: blog/index.md
+      - Categories:
+          - Diary: blog/categories/diary.md
+          - Life: blog/categories/life.md
+          - Tech: blog/categories/tech.md
+          - Travel: blog/categories/travel.md
+          - Notes: blog/categories/notes.md
