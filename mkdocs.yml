@@ -5,7 +5,7 @@ theme:
   name: material
   language: en
   features:
-    - navigation.instant
+    # - navigation.instant  # 与博客分页冲突，禁用
     - search.suggest
     - search.highlight
     - content.code.copy
