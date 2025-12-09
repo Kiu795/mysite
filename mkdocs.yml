@@ -4,8 +4,9 @@ site_url: https://kiu795.github.io/mysite/
 theme:
   name: material
   language: en
+  custom_dir: overrides        # ← 必须加！
   features:
-    # - navigation.instant  # 与博客分页冲突，禁用
+    - navigation.instant
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -14,7 +15,16 @@ theme:
 
 plugins:
   - search
-  - blogging
+  - blogging:
+      blog_dir: docs/blog
+      post_template: templates/post.html
+      categories_allowed:
+        - tech
+        - diary
+        - travel
+        - notes
+        - life
+      use_git_date: true
 
 markdown_extensions:
   - admonition
@@ -26,7 +36,6 @@ markdown_extensions:
   - pymdownx.emoji
 
 extra_css:
-  - stylesheets/extra.css
   - stylesheets/cards.css
 
 nav:
