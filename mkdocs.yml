@@ -1,4 +1,6 @@
 site_name: Kiu’s Blog
+site_url: https://kiu795.github.io/mysite/
+
 theme:
   name: material
   language: en
@@ -12,17 +14,7 @@ theme:
 
 plugins:
   - search
-  - blogging:
-      blog_dir: blog
-      post_template: templates/post.html
-      categories_allowed:
-        - tech
-        - diary
-        - travel
-        - notes
-        - life
-      use_git_date: true
-      ignore_errors: true
+  - blogging
 
 markdown_extensions:
   - admonition
