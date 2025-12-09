@@ -1,0 +1,17 @@
+{# overrides/blog_card.html #}
+<div class="blog-cards">
+  {% for post in posts %}
+  <a class="blog-card" href="{{ post.url }}">
+    {% if post.meta.image %}
+      <img class="card-image" src="{{ post.meta.image }}" alt="{{ post.title }}"/>
+    {% endif %}
+    <div class="card-body">
+      <h3 class="card-title">{{ post.title }}</h3>
+      {% if post.excerpt %}
+        <div class="card-excerpt">{{ post.excerpt|striptags }}</div>
+      {% endif %}
+      <div class="card-meta">{{ post.date }}</div>
+    </div>
+  </a>
+  {% endfor %}
+</div>

@@ -1,0 +1,11 @@
+{# overrides/index.html #}
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="md-typeset">
+    {{ page.content }}
+  </div>
+
+  <h2>Recent Posts</h2>
+  {% include "blog_card.html" with posts=site.posts[:5] %}
+{% endblock %}
