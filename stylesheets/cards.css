@@ -1,0 +1,52 @@
+/* docs/stylesheets/cards.css */
+.blog-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+
+.blog-card {
+  display: block;
+  background: var(--md-default-surface);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--md-shadow-z2);
+  transition: transform .18s ease, box-shadow .18s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--md-shadow-z4);
+}
+
+.blog-card .card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-card .card-body {
+  padding: 0.8rem 1rem;
+}
+
+.blog-card .card-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.blog-card .card-excerpt {
+  margin: 0.4rem 0 0.6rem 0;
+  color: var(--md-typeset-secondary);
+  font-size: 0.95rem;
+  min-height: 2.6em;
+}
+
+.blog-card .card-meta {
+  font-size: 0.85rem;
+  color: var(--md-typeset-secondary);
+}
