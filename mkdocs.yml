@@ -5,21 +5,10 @@ theme:
   name: material
   language: en
   custom_dir: overrides
-  features:
-    - search.suggest
-    - search.highlight
-    - content.code.copy
-    - navigation.top
-    - toc.integrate
 
 plugins:
   - search
-  - blog:
-      blog_dir: blog
-      output_dir: blog
-      categories: true
-      authors: false
-      pagination: false      # 关闭分页以避免与 navigation.instant 冲突
+  - blogging    # 使用最基本形式，不带额外不支持字段
 
 markdown_extensions:
   - admonition
@@ -37,9 +26,3 @@ nav:
   - Home: index.md
   - Blog:
       - All Posts: blog/index.md
-  - Categories:
-      - Tech: blog/categories/tech.md
-      - Diary: blog/categories/diary.md
-      - Travel: blog/categories/travel.md
-      - Notes: blog/categories/notes.md
-      - Life: blog/categories/life.md
